@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATOM QUEST - Goal Setting & Tracking Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>⚡ ATOM QUEST Performance OS</h1>
+    <p>Goal Setting • Check-ins • KPI Governance</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Role Switch (Demo)</h2>
+      <div class="row">
+        <label for="role">Login as</label>
+        <select id="role">
+          <option value="employee">Employee</option>
+          <option value="manager">Manager (L1)</option>
+          <option value="admin">Admin / HR</option>
+        </select>
+        <button id="switchRole">Switch</button>
+      </div>
+      <p id="activeRole"></p>
+    </section>
+
+    <section class="card" id="employeeSection">
+      <h2>Employee: Goal Sheet</h2>
+      <form id="goalForm">
+        <div class="grid">
+          <input id="title" placeholder="Goal title" required />
+          <input id="desc" placeholder="Description" required />
+          <input id="thrust" placeholder="Thrust area" required />
+          <select id="uom">
+            <option value="min">Min (Higher better)</option>
+            <option value="max">Max (Lower better)</option>
+            <option value="timeline">Timeline</option>
+            <option value="zero">Zero-based</option>
+          </select>
+          <input id="target" placeholder="Target" required />
+          <input id="weight" type="number" min="10" max="100" placeholder="Weightage %" required />
+        </div>
+        <button type="submit">Add Goal</button>
+      </form>
+      <div class="row">
+        <button id="submitGoals">Submit Goal Sheet</button>
+      </div>
+      <p class="hint">Rules: max 8 goals, min 10% each, total must be 100% before submission.</p>
+    </section>
+
+    <section class="card">
+      <h2>Goals</h2>
+      <table>
+        <thead>
+          <tr><th>Title</th><th>Target</th><th>Wt%</th><th>Status</th><th>Achievement</th><th>Progress</th><th>Action</th></tr>
+        </thead>
+        <tbody id="goalTable"></tbody>
+      </table>
+    </section>
+
+    <section class="card" id="managerSection">
+      <h2>Manager Check-in</h2>
+      <div class="row">
+        <button id="approveGoals">Approve & Lock</button>
+        <button id="returnGoals">Return for Rework</button>
+      </div>
+      <textarea id="managerComment" placeholder="Structured check-in comment"></textarea>
+      <button id="saveComment">Save Comment</button>
+      <ul id="commentLog"></ul>
+    </section>
+
+    <section class="card" id="adminSection">
+      <h2>Admin Controls</h2>
+      <div class="row">
+        <button id="unlockGoals">Unlock Goals</button>
+        <button id="exportCsv">Export Achievement CSV</button>
+      </div>
+      <h3>Audit Trail</h3>
+      <ul id="audit"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Quarterly Window Status</h2>
+      <p id="quarterWindow"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
