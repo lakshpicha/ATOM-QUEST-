@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Powered Employee Goal Intelligence Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <header class="topbar">
+    <div>
+      <h1>🚀 Goal Intelligence Platform</h1>
+      <p>AI-Powered Employee Goal Intelligence Platform</p>
+    </div>
+    <div class="top-actions">
+      <select id="role">
+        <option value="employee">Employee</option>
+        <option value="manager">Manager (L1)</option>
+        <option value="admin">Admin / HR</option>
+      </select>
+      <button id="switchRole">Switch Role</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="card sidebar">
+      <h3>Session</h3>
+      <p id="activeRole"></p>
+      <p id="quarterWindow"></p>
+      <h4>Quick Stats</h4>
+      <ul>
+        <li>Total Goals: <b id="totalGoals"></b></li>
+        <li>Total Weight: <b id="totalWeight"></b></li>
+        <li>Locked: <b id="lockState"></b></li>
+      </ul>
+    </aside>
+
+    <section class="stack">
+      <section class="card" id="employeeSection">
+        <h2>Employee Workspace</h2>
+        <div class="row">
+          <button id="aiSuggest">✨ AI Suggest Goals</button>
+        </div>
+        <form id="goalForm" class="grid">
+          <input id="title" placeholder="Goal title" required />
+          <input id="desc" placeholder="Description" required />
+          <input id="thrust" placeholder="Thrust area" required />
+          <select id="uom">
+            <option value="min">Min (Higher better)</option>
+            <option value="max">Max (Lower better)</option>
+            <option value="timeline">Timeline</option>
+            <option value="zero">Zero-based</option>
+          </select>
+          <input id="target" placeholder="Target" required />
+          <input id="weight" type="number" min="10" max="100" placeholder="Weightage %" required />
+          <button type="submit">Add Goal</button>
+          <button type="button" id="submitGoals">Submit Goal Sheet</button>
+        </form>
+        <p class="hint">Validation: max 8 goals • min 10% per goal • total must be 100% before submission.</p>
+      </section>
+
+      <section class="card" id="managerSection">
+        <h2>Manager Workspace</h2>
+        <div class="row">
+          <button id="approveGoals">Approve & Lock</button>
+          <button id="returnGoals" class="ghost">Return for Rework</button>
+        </div>
+        <h3>AI Risk Alerts</h3>
+        <ul id="riskAlerts"></ul>
+        <textarea id="managerComment" placeholder="Structured check-in feedback"></textarea>
+        <button id="saveComment">Save Feedback</button>
+        <ul id="commentLog"></ul>
+      </section>
+
+      <section class="card" id="adminSection">
+        <h2>Admin Analytics & Governance</h2>
+        <div class="row">
+          <button id="unlockGoals">Unlock Goals</button>
+          <button id="exportCsv">Export CSV</button>
+        </div>
+        <div class="kpi-grid">
+          <div><span>Check-in Completion</span><b id="completionRate"></b></div>
+          <div><span>Predicted Risk Goals</span><b id="riskCount"></b></div>
+          <div><span>Completed Goals</span><b id="doneGoals"></b></div>
+        </div>
+        <h3>Audit Trail</h3>
+        <ul id="audit"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Goal Board</h2>
+        <table>
+          <thead>
+            <tr><th>Goal</th><th>Target</th><th>Wt%</th><th>Status</th><th>Achievement</th><th>Progress</th><th>Risk</th><th>Action</th></tr>
+          </thead>
+          <tbody id="goalTable"></tbody>
+        </table>
+      </section>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
